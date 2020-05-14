@@ -1,0 +1,36 @@
+{
+  "name": "mern-backend",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000m\u0000e\u0000r\u0000n\u0000-\u0000a\u0000p\u0000p\u0000-\u0000b\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anand-9911/mern-app-backend.git"
+  },
+  "author": "Anand Gautam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anand-9911/mern-app-backend/issues"
+  },
+  "homepage": "https://github.com/anand-9911/mern-app-backend#readme",
+  "dependencies": {
+    "D": "^1.0.0",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^5.2.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.13",
+    "nodemon": "^2.0.3",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.9"
+  }
+}

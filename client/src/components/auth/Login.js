@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Register = () => {
+const Login = () => {
   const [formData, setformData] = useState({
-    name: '',
     email: '',
     password: '',
-    password2: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
 
   const onChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
@@ -16,28 +14,16 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (password !== password2) {
-      console.log("Password don't match");
-    } else console.log(formData);
+    console.log(formData);
   };
 
   return (
     <>
-      <h1 className='large text-primary'>Sign Up</h1>
+      <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
+        <i className='fas fa-user'></i> Login to Your Account
       </p>
       <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
         <div className='form-group'>
           <input
             type='email'
@@ -62,23 +48,13 @@ const Register = () => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Confirm Password'
-            name='password2'
-            minLength='6'
-            value={password2}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
+        <input type='submit' className='btn btn-primary' value='Login' />
       </form>
       <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
+        Don't have an account? <Link to='/register'>Sign Up</Link>
       </p>
     </>
   );
 };
 
-export default Register;
+export default Login;

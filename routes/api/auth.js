@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 const auth = require('../../middleware/auth');
 
 //@route  GET api/auth
-//@desc   Test Route
+//@desc   Auth
 //@access Public
 
 router.get('/', auth, async (req, res) => {
@@ -23,8 +23,8 @@ router.get('/', auth, async (req, res) => {
   res.send('AuthRoute');
 });
 
-//@route  POSR api/auth
-//@desc   Authenticate user and get the token
+//@route  POST api/auth
+//@desc   Login the user
 //@access Public
 
 router.post(

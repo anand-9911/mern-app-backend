@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { PROFILE_ERROR, GET_PROFILE, CREATE_PROFILE } from './type';
+import {
+  PROFILE_ERROR,
+  GET_PROFILE,
+  CREATE_PROFILE,
+  EDIT_PROFILE,
+  UPDATE_PROFILE,
+} from './type';
 
 //get current profile
 
@@ -21,11 +27,40 @@ export const getCurrentProfile = () => async (dispatch) => {
     });
   }
 };
-//Create/update Profile
+//Create Profile
 
-export const createProfile = (formData, history, edit = false) => async (
-  dispatch
-) => {
+export const createProfile = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await axios.post('api/profile', formData, config);
+    dispatch({
+      type: CREATE_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert('Profile Created', 'success'));
+    history.push('/dashboard');
+  } catch (error) {
+    const errors = error.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        mgs: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Edit Profile
+export const editProfile = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -34,17 +69,48 @@ export const createProfile = (formData, history, edit = false) => async (
     };
 
     const res = await axios.post('api/profile', formData, config);
+
     dispatch({
-      type: CREATE_PROFILE,
+      type: EDIT_PROFILE,
       payload: res.data,
     });
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
-    if (!edit) {
-      history.push('/dashboard');
-    }
+
+    dispatch(setAlert('Profile Updated', 'success'));
+    history.push('/dashboard');
   } catch (error) {
     const errors = error.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        mgs: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+//Add Experience in Profile
+export const addExperience = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
+    const res = await axios.put('api/profile/experience', formData, config);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Experience Added', 'success'));
+    history.push('/dashboard');
+  } catch (error) {
+    const errors = error.response.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }

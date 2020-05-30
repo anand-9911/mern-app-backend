@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { editProfile, getCurrentProfile } from '../../actions/profile';
 
 const EditProfile = ({
-  createProfile,
+  editProfile,
   history,
   getCurrentProfile,
   profile: { loading, profile },
@@ -37,7 +37,7 @@ const EditProfile = ({
       status: loading || !profile.status ? '' : profile.status,
       githubusername:
         loading || !profile.githubusername ? '' : profile.githubusername,
-      skills: loading || !profile.skills ? '' : profile.skills,
+      skills: loading || !profile.skills ? '' : profile.skills.join(','),
       twitter: loading || !profile.social ? '' : profile.social.twitter,
       facebook: loading || !profile.social ? '' : profile.social.facebook,
       linkedin: loading || !profile.social ? '' : profile.social.linkedin,
@@ -66,7 +66,7 @@ const EditProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData, history);
+    editProfile(formData, history);
   };
 
   return (
@@ -239,7 +239,7 @@ const EditProfile = ({
 };
 
 EditProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired,
+  editProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -248,6 +248,6 @@ const mapStateToProps = (state) => ({
   profile: state.profileReducer,
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+export default connect(mapStateToProps, { editProfile, getCurrentProfile })(
   withRouter(EditProfile)
 );

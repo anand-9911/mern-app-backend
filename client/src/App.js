@@ -8,6 +8,8 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import Alert from './components/layout/Alert';
+import CreateProfile from './components/profileForms/CreateProfile';
+import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setToken from './utils/setToken';
 import store from './store';
@@ -31,6 +33,12 @@ export const App = () => {
           <Switch>
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute
+              exact
+              path='/create-profile'
+              component={CreateProfile}
+            />
           </Switch>
         </section>
       </>

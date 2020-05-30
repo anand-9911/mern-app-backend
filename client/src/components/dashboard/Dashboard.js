@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
+import DashboardActions from './DashboardActions';
 
 const Dashboard = ({
   profile: { profile, loading },
@@ -24,13 +25,15 @@ const Dashboard = ({
       </p>
       {profile === null ? (
         <>
-          <p>You have not ye setup a profile</p>
+          <p>You have not yet setup a profile,please add some information</p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
         </>
       ) : (
-        <>HAS</>
+        <>
+          <DashboardActions />
+        </>
       )}
     </>
   );

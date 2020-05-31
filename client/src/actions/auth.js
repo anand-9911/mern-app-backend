@@ -48,6 +48,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (error) {
+    console.error(error.message);
     const errors = error.response.data.errors;
 
     if (errors) {

@@ -10,6 +10,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import Alert from './components/layout/Alert';
 import CreateProfile from './components/profileForms/CreateProfile';
 import EditProfile from './components/profileForms/EditProfile';
+import AddExperience from './components/profileForms/AddExperience';
+import AddEducation from './components/profileForms/AddEducation';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setToken from './utils/setToken';
@@ -41,6 +43,16 @@ export const App = () => {
               component={CreateProfile}
             />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+            <PrivateRoute
+              exact
+              path='/add-experience'
+              component={AddExperience}
+            />
+            <PrivateRoute
+              exact
+              path='/add-education'
+              component={AddEducation}
+            />
           </Switch>
         </section>
       </>

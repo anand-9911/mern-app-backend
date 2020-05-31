@@ -91,8 +91,12 @@ export const editProfile = (formData, history) => async (dispatch) => {
     });
   }
 };
-//Add Experience in Profile
-export const addExperience = (formData, history) => async (dispatch) => {
+//Add Experience/Education in Profile
+export const addExperienceOrEducation = (
+  formData,
+  history,
+  edu = false
+) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -100,14 +104,18 @@ export const addExperience = (formData, history) => async (dispatch) => {
       },
     };
 
-    const res = await axios.put('api/profile/experience', formData, config);
+    const res = await axios.put(
+      edu ? 'api/profile/education' : 'api/profile/experience',
+      formData,
+      config
+    );
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,
     });
 
-    dispatch(setAlert('Experience Added', 'success'));
+    dispatch(setAlert(edu ? 'Education Added' : 'Experience Added', 'success'));
     history.push('/dashboard');
   } catch (error) {
     const errors = error.response.data.errors;

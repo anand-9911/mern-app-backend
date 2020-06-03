@@ -20,6 +20,7 @@ import { loadUser } from './actions/auth';
 import setToken from './utils/setToken';
 import store from './store';
 import ProfilesList from './components/profile/ProfilesList';
+import Discussion from './components/post/Discussion';
 
 if (localStorage.token) {
   setToken(localStorage.token);
@@ -44,6 +45,7 @@ export const App = () => {
             <Route exact path='/main-profile' component={MainProfile} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <PrivateRoute exact path='/posts' component={PostComponent} />
+            <PrivateRoute exact path='/discussion' component={Discussion} />
             <PrivateRoute
               exact
               path='/create-profile'

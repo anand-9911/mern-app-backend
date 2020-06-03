@@ -1,5 +1,7 @@
+//ALERT RELATED
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+//UTH RELATED
 export const REGISTER_SUCCESS = 'REFISTER_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const REGISTER_FAIL = 'REFISTER_FAIL';
@@ -7,6 +9,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOADED_SUCCESS = 'LOADED_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const LOGOUT = 'LOGOUT';
+//PROFILE RELATED
 export const GET_PROFILE = 'GET_PROFILE';
 export const GET_PROFILES = 'GET_PROFILES';
 export const GET_REPOS = 'GET_REPOS';
@@ -16,3 +19,8 @@ export const CREATE_PROFILE = 'CREATE_PROFILE';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
+//POST RELATED
+export const GET_POSTS = 'GET_POSTS';
+export const POST_ERROR = 'POST_ERROR';
+export const CREATE_POST = 'CREATE_POST';
+export const DELETE_POST = 'DELETE_POST';

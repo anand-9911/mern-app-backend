@@ -19,7 +19,7 @@ const MainProfile = ({
   useEffect(() => {
     const { id } = location.state;
     getProfileById(id);
-  }, [getProfileById]);
+  }, [getProfileById, location.state]);
 
   return (
     <>

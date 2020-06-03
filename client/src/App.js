@@ -14,6 +14,7 @@ import AddExperience from './components/profileForms/AddExperience';
 import AddEducation from './components/profileForms/AddEducation';
 import PrivateRoute from './components/routing/PrivateRoute';
 import MainProfile from './components/profile/MainProfile';
+import PostComponent from './components/post/PostComponent';
 
 import { loadUser } from './actions/auth';
 import setToken from './utils/setToken';
@@ -42,6 +43,7 @@ export const App = () => {
             <Route exact path='/profiles' component={ProfilesList} />
             <Route exact path='/main-profile' component={MainProfile} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute exact path='/posts' component={PostComponent} />
             <PrivateRoute
               exact
               path='/create-profile'

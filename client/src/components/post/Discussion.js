@@ -21,16 +21,16 @@ const Discussion = ({ location, getPostById }) => {
         <Spinner />
       ) : (
         <>
-          <Link to='/posts' class='btn'>
+          <Link to='/posts' className='btn'>
             Back To Posts
           </Link>
-          <div class='post bg-white p-1 my-1'>
+          <div className='post bg-white p-1 my-1'>
             <div>
-              <img class='round-img' src={avatar} alt='avatar' />
+              <img className='round-img' src={avatar} alt='avatar' />
               <h4>{name}</h4>
             </div>
             <div>
-              <p class='my-1'>{text}</p>
+              <p className='my-1'>{text}</p>
             </div>
           </div>
           <AddComment id={_id} />

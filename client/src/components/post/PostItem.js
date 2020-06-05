@@ -11,39 +11,39 @@ const PostItem = ({ post, auth, deletePost, addLike, removeLike }) => {
   const { _id, text, name, avatar, user, likes, date, comments } = post;
   return (
     <>
-      <div class='post bg-white p-1 my-1'>
+      <div className='post bg-white p-1 my-1'>
         <div>
           <Link to='/main-profile'>
-            <img class='round-img' src={avatar} alt='avatar' />
+            <img className='round-img' src={avatar} alt='avatar' />
             <h4>{name}</h4>
           </Link>
         </div>
         <div>
-          <p class='my-1'>{text}</p>
-          <p class='post-date'>
+          <p className='my-1'>{text}</p>
+          <p className='post-date'>
             Posted on <Moment format='YYYY/MM/DD'>{moment.utc(date)}</Moment>{' '}
           </p>
           <button
             type='button'
-            class='btn btn-light'
+            className='btn btn-light'
             onClick={(e) => addLike(_id)}>
-            <i class='fas fa-thumbs-up'></i>{' '}
+            <i className='fas fa-thumbs-up'></i>{' '}
             <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
           </button>
           <button
             type='button'
-            class='btn btn-light'
+            className='btn btn-light'
             onClick={(e) => removeLike(_id)}>
-            <i class='fas fa-thumbs-down'></i>
+            <i className='fas fa-thumbs-down'></i>
           </button>
           <Link
             to={{
               pathname: '/discussion',
               state: { id: _id, postFromLink: post },
             }}
-            class='btn btn-primary'>
+            className='btn btn-primary'>
             Discussion{' '}
-            <span class='comment-count'>
+            <span className='comment-count'>
               {comments.length > 0 ? (
                 <span>{comments.length}</span>
               ) : (
@@ -54,9 +54,9 @@ const PostItem = ({ post, auth, deletePost, addLike, removeLike }) => {
           {auth.user._id === user && (
             <button
               type='button'
-              class='btn btn-danger'
+              className='btn btn-danger'
               onClick={(e) => deletePost(_id)}>
-              <i class='fas fa-times'></i>
+              <i className='fas fa-times'></i>
             </button>
           )}
         </div>

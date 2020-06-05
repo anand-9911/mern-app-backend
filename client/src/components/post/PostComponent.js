@@ -18,7 +18,7 @@ const PostComponent = ({ getAllPosts, post: { posts, loading } }) => {
         <Spinner />
       ) : (
         <>
-          <div class='posts'>
+          <div className='posts'>
             {posts && posts.map((post) => <PostItem post={post} />)}
           </div>
         </>

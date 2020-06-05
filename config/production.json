@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://anand-123:anand-123@mern-kd3ee.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "thisismysecretetoken",
+  "gitClientID": "6636c07a1556f5fdc07b",
+  "gitClientSecret": "8c0f1f62d0353091bdcd35d35b6da55896c0cb78"
+}

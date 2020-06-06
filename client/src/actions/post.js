@@ -9,6 +9,7 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   UPDATE_LIKES,
+  CLICK_ERROR,
 } from './type';
 
 // Get all the post
@@ -157,7 +158,7 @@ export const addLike = (postId) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: POST_ERROR,
+      type: CLICK_ERROR,
       payload: {
         mgs: error.response.statusText,
         status: error.response.status,
@@ -176,7 +177,7 @@ export const removeLike = (postId) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: POST_ERROR,
+      type: CLICK_ERROR,
       payload: {
         mgs: error.response.statusText,
         status: error.response.status,

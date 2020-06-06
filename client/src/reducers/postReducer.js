@@ -7,6 +7,7 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   UPDATE_LIKES,
+  CLICK_ERROR,
 } from '../actions/type';
 
 const inititalState = {
@@ -75,6 +76,12 @@ export default function (state = { inititalState }, action) {
         posts: state.posts.map((post) =>
           post._id === payload.postId ? { ...post, likes: payload.likes } : post
         ),
+      };
+    case CLICK_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
       };
     default:
       return state;

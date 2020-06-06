@@ -7,17 +7,20 @@ import Spinner from '../layout/Spinner';
 import AddComment from './AddComment';
 import CommentItem from './CommentItem';
 
-const Discussion = ({ location, getPostById }) => {
+const Discussion = ({ location, getPostById, singlePost }) => {
   useEffect(() => {
     const { id } = location.state;
     getPostById(id);
   }, [getPostById, location.state]);
 
-  const { postFromLink } = location.state;
-  const { _id, text, name, avatar, comments } = postFromLink;
+  if (singlePost === undefined) {
+    return <Spinner />;
+  }
+  const { _id, text, name, avatar, comments } = singlePost;
+
   return (
     <>
-      {postFromLink === null ? (
+      {singlePost === null ? (
         <Spinner />
       ) : (
         <>
@@ -49,6 +52,11 @@ const Discussion = ({ location, getPostById }) => {
 
 Discussion.propTypes = {
   getPostById: PropTypes.func.isRequired,
+  singlePost: PropTypes.object.isRequired,
 };
 
-export default connect(null, { getPostById })(Discussion);
+const mapStateToProps = (state) => ({
+  singlePost: state.postReducer.post,
+});
+
+export default connect(mapStateToProps, { getPostById })(Discussion);

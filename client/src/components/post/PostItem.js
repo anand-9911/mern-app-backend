@@ -39,7 +39,7 @@ const PostItem = ({ post, auth, deletePost, addLike, removeLike }) => {
           <Link
             to={{
               pathname: '/discussion',
-              state: { id: _id, postFromLink: post },
+              state: { id: _id },
             }}
             className='btn btn-primary'>
             Discussion{' '}

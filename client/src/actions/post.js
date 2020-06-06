@@ -104,8 +104,6 @@ export const createComment = (postId, commentData) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     };
-    console.log(postId);
-    console.log(commentData);
     const res = await axios.post(
       `api/posts/comment/${postId}`,
       commentData,
